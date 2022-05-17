@@ -20,13 +20,14 @@ namespace TestingSystem
     /// </summary>
     public partial class MainWindow : Window
     {
+        TestViewModel viewModel;
         public MainWindow()
         {
             InitializeComponent();
 
-            string[] variants = { "var 1", "var 2", "var 3" };
+            viewModel = new TestViewModel();
 
-            Answers.ItemsSource = variants;
+            DataContext = viewModel.Questions[0];
         }
     }
 }

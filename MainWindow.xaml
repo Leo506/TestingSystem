@@ -12,9 +12,9 @@
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="Question" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        <TextBlock Grid.Row="0" Text="{Binding QuestionText}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
 
-        <ListBox x:Name="Answers" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top">
+        <ListBox x:Name="Answers" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" ItemsSource="{Binding Answers}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Viewbox Height="25">

@@ -16,19 +16,25 @@ namespace TestingSystem.Testing
     public class Question
     {
         private string[] answersVariant;
+        private string questrionText;
         private int correctIndex;
+
+        public string QuestionText { get => questrionText; }
+        public string[] Answers { get => answersVariant; }
 
         private QuestionStates state;
 
         public Question()
         {
+            questrionText = "";
             state = QuestionStates.UNDEFINED;
             correctIndex = 0;
             answersVariant = new string[0];
         }
 
-        public Question(string[] answers, int index)
+        public Question(string[] answers, int index, string text = "")
         {
+            questrionText = text;
             state = QuestionStates.UNDEFINED;
             correctIndex = index;
             answersVariant = answers;
@@ -44,5 +50,7 @@ namespace TestingSystem.Testing
         public string[] GetAnswerVariants() => answersVariant;
 
         public int GetCorrectAnswer() => correctIndex;
+
+        public string GetQuestionText() => questrionText;
     }
 }
