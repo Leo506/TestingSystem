@@ -25,17 +25,7 @@ namespace TestingSystem
 
         public TestViewModel()
         {
-            test = new Test();
-            AddTestData(test);
-        }
-
-        private void AddTestData(Test test)
-        {
-            Question q1 = new Question(new string[] { "var 1", "var 2", "var 3"}, 0, "text text");
-            Question q2 = new Question(new string[] { "var 4", "var 5", "var 6" }, 1, "text1 text1");
-
-            test.AddQuestion(q1);
-            test.AddQuestion(q2);
+            test = Data.DataFactory.BuildDataGiver().GetTest();
         }
     }
 }
