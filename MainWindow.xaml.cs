@@ -23,6 +23,10 @@ namespace TestingSystem
         public MainWindow()
         {
             InitializeComponent();
+
+            string[] variants = { "var 1", "var 2", "var 3" };
+
+            Answers.ItemsSource = variants;
         }
     }
 }
