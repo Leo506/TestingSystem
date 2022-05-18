@@ -10,11 +10,12 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="{Binding QuestionText}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        <TextBlock Grid.Row="0" Text="{Binding QuestionText, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
 
-        <ListBox x:Name="Answers" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" ItemsSource="{Binding Answers}">
+        <ListBox x:Name="Answers" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" ItemsSource="{Binding Answers, UpdateSourceTrigger=PropertyChanged}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Viewbox Height="25">
@@ -23,5 +24,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
+        <Button Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Next" Click="NextQuestion"/>
     </Grid>
 </Window>

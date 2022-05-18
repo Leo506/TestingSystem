@@ -27,7 +27,14 @@ namespace TestingSystem
 
             viewModel = new TestViewModel();
 
-            DataContext = viewModel.Questions[0];
+            DataContext = viewModel.Question;
+        }
+
+
+        private void NextQuestion(object sender, RoutedEventArgs e)
+        {
+            viewModel.NextQuestion();
+            DataContext = viewModel.Question;
         }
     }
 }
