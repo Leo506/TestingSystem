@@ -12,9 +12,9 @@ namespace TestingSystem.Data
         public Test GetTest()
         {
             Test test = new Test();
-            Question q1 = new Question(new string[] { "var 1", "var 2", "var 3" }, 0, "text text");
-            Question q2 = new Question(new string[] { "var 4", "var 5", "var 6" }, 1, "text1 text1");
-            Question q3 = new Question(new string[] { "var 5", "var 6", "var 7" }, 2, "text2 text2");
+            Question q1 = new Question(new string[] { "5", "4", "3" }, 0, "Сколько пальцев на руке у человека?");
+            Question q2 = new Question(new string[] { "Венера", "Земля", "Марс" }, 1, "На какой планете мы живем?");
+            Question q3 = new Question(new string[] { "Красный", "Зеленый", "Синий" }, 2, "Какого цвета небо?");
 
             test.AddQuestion(q1);
             test.AddQuestion(q2);

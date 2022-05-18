@@ -11,7 +11,7 @@ namespace TestingSystem
         public int CorrectAnswersCount { get; private set; }
         public int AllAnswersCount { get; private set; }
 
-        public double Result { get; private set; }
+        public string Result { get; private set; }
 
         public SummaryViewModel(Testing.Test test)
         {
@@ -21,7 +21,9 @@ namespace TestingSystem
 
             CorrectAnswersCount = questions.Where(q => q.GetState() == Testing.QuestionStates.CORRECT_ANSWER).Count();
             AllAnswersCount = questions.Length;
-            Result = test.Statistic;
+            double tmp = test.Statistic * 100;
+            tmp = Math.Round(tmp, 2);
+            Result = tmp.ToString() + "%";
         }
     }
 }
