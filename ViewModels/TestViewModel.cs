@@ -19,6 +19,8 @@ namespace TestingSystem
             get { return test.GetQuestion(questionIndex); }
         }
 
+        public bool HasPreviousQuestion { get => questionIndex > 0; }
+
         public TestViewModel()
         {
             questionIndex = 0;
@@ -31,10 +33,16 @@ namespace TestingSystem
                 questionIndex++;
         }
 
-        internal void SelectAnswer(string answer)
+        public void SelectAnswer(string answer)
         {
             test.SelectAnswer(questionIndex, answer);
             Trace.WriteLine("Stats: " + test.Statistic);
+        }
+
+        public void PreviousQuestion()
+        {
+            if (questionIndex - 1 >= 0)
+                questionIndex--;
         }
     }
 }

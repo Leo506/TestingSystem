@@ -28,6 +28,8 @@ namespace TestingSystem
             viewModel = new TestViewModel();
 
             DataContext = viewModel.Question;
+
+            PrevButton.Visibility = Visibility.Collapsed;
         }
 
 
@@ -35,6 +37,8 @@ namespace TestingSystem
         {
             viewModel.NextQuestion();
             DataContext = viewModel.Question;
+
+            PrevButton.Visibility = Visibility.Visible;
         }
 
 
@@ -45,6 +49,18 @@ namespace TestingSystem
             if (btn != null)
             {
                 viewModel.SelectAnswer(btn.Content.ToString());
+            }
+        }
+
+        private void PreviousQuestion(object sender, RoutedEventArgs e)
+        {
+            if (viewModel.HasPreviousQuestion)
+            {
+                viewModel.PreviousQuestion();
+                DataContext = viewModel.Question;
+
+                if (!viewModel.HasPreviousQuestion)
+                    PrevButton.Visibility = Visibility.Collapsed;
             }
         }
     }
