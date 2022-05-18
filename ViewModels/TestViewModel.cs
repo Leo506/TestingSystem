@@ -33,10 +33,14 @@ namespace TestingSystem
             }
         }
 
-        public void NextQuestion()
+        public bool NextQuestion()
         {
             if (questionIndex + 1 < test.QuestionCount)
+            {
                 questionIndex++;
+                return true;
+            }
+            return false;
         }
 
         public void SelectAnswer(string answer)
@@ -50,5 +54,7 @@ namespace TestingSystem
             if (questionIndex - 1 >= 0)
                 questionIndex--;
         }
+
+        public Test GetTest() => test;
     }
 }

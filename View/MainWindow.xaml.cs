@@ -35,10 +35,17 @@ namespace TestingSystem
 
         private void NextQuestion(object sender, RoutedEventArgs e)
         {
-            viewModel.NextQuestion();
-            DataContext = viewModel.Question;
+            if (viewModel.NextQuestion())
+            {
+                DataContext = viewModel.Question;
 
-            PrevButton.Visibility = Visibility.Visible;
+                PrevButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                var summary = new SummaryWindow(viewModel.GetTest());
+                summary.ShowDialog();
+            }
         }
 
 

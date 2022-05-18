@@ -12,16 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace TestingSystem.View
+namespace TestingSystem
 {
     /// <summary>
     /// Логика взаимодействия для SummaryWindow.xaml
     /// </summary>
     public partial class SummaryWindow : Window
     {
-        public SummaryWindow()
+        SummaryViewModel viewModel;
+        public SummaryWindow(Testing.Test test)
         {
             InitializeComponent();
+            viewModel = new SummaryViewModel(test);
+
+            DataContext = viewModel;
         }
     }
 }
