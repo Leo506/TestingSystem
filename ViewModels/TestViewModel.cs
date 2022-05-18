@@ -14,9 +14,10 @@ namespace TestingSystem
     {
         private Test test;
         private int questionIndex;
-        public Question Question
+        private List<QuestionViewModel> questions;
+        public QuestionViewModel Question
         {
-            get { return test.GetQuestion(questionIndex); }
+            get { return questions[questionIndex]; }
         }
 
         public bool HasPreviousQuestion { get => questionIndex > 0; }
@@ -25,6 +26,11 @@ namespace TestingSystem
         {
             questionIndex = 0;
             test = Data.DataFactory.BuildDataGiver().GetTest();
+            questions = new List<QuestionViewModel>();
+            for (int i = 0; i < test.QuestionCount; i++)
+            {
+                questions.Add(new QuestionViewModel(test.GetQuestion(i)));
+            }
         }
 
         public void NextQuestion()

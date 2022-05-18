@@ -19,7 +19,7 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Viewbox Height="25">
-                        <RadioButton GroupName="AnswerVariants" Content="{TemplateBinding Content}" Click="SelectAnswer"/>
+                        <RadioButton GroupName="AnswerVariants" Content="{Binding Text}" IsChecked="{Binding IsChecked, Mode=TwoWay}" Click="SelectAnswer"/>
                     </Viewbox>
                 </DataTemplate>
             </ListBox.ItemTemplate>
