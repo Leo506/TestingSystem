@@ -35,5 +35,15 @@ namespace TestingSystem.Testing
             else
                 question.SetState(QuestionStates.UNCORRECT_ANSWER);
         }
+
+        public void SelectAnswer(int questionIndex, string answer)
+        {
+            Question question = questions[questionIndex];
+            string correct = question.Answers[question.GetCorrectAnswer()];
+            if (correct == answer)
+                question.SetState(QuestionStates.CORRECT_ANSWER);
+            else
+                question.SetState(QuestionStates.UNCORRECT_ANSWER);
+        }
     }
 }

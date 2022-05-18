@@ -30,5 +30,11 @@ namespace TestingSystem
             if (questionIndex + 1 < test.QuestionCount)
                 questionIndex++;
         }
+
+        internal void SelectAnswer(string answer)
+        {
+            test.SelectAnswer(questionIndex, answer);
+            Trace.WriteLine("Stats: " + test.Statistic);
+        }
     }
 }

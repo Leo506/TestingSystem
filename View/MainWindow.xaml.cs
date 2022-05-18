@@ -36,5 +36,16 @@ namespace TestingSystem
             viewModel.NextQuestion();
             DataContext = viewModel.Question;
         }
+
+
+        private void SelectAnswer(object sender, RoutedEventArgs e)
+        {
+            RadioButton? btn = sender as RadioButton;
+
+            if (btn != null)
+            {
+                viewModel.SelectAnswer(btn.Content.ToString());
+            }
+        }
     }
 }
