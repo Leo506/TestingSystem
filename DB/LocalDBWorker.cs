@@ -57,15 +57,32 @@ namespace TestingSystem.DB
 
         public User GetUser(string login, string password)
         {
-            return new User() { Name = login == "Admin" ? "God" : "Nobody", CountOfTests = 0 };
+            string sql = $"select * from User where login = \"{login}\" and password = \"{password}\";";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+
+            var reader = command.ExecuteReader();
+            reader.Read();
+
+            User user = new User() { Name = reader.GetString("Name"), CountOfTests = 0 };
+
+            reader.Close();
+            reader.Dispose();
+
+            return user;
         }
 
         public bool HasUser(string login, string password)
         {
-            if ((login == "Admin" && password == "Admin") || (login == "User" && password == "User"))
-                return true;
+            string sql = $"select * from User where login = \"{login}\" and password = \"{password}\";";
+            MySqlCommand command = new MySqlCommand(sql, connection);
 
-            return false;
+            var reader = command.ExecuteReader();
+            bool result = reader.HasRows;
+
+            reader.Close();
+            reader.Dispose();
+
+            return result;
         }
 
         ~LocalDBWorker()
