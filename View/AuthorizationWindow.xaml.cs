@@ -20,15 +20,24 @@ namespace TestingSystem
     /// </summary>
     public partial class AuthorizationWindow : Window
     {
+        Auth.AuthModel authModel;
         public AuthorizationWindow()
         {
             InitializeComponent();
+            authModel = new Auth.AuthModel();
         }
 
         private void Authorize(object sender, RoutedEventArgs e)
         {
             var login = LoginInput.Text;
             var password = PasswordInput.Password;
+
+            var result = authModel.TryAuth(login, password);
+            if (!result)
+            {
+                MessageBox.Show("Authorization failed");
+                return;
+            }
 
             var main = new MainWindow();
             main.Show();
