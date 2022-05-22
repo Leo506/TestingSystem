@@ -10,5 +10,7 @@ namespace TestingSystem.DB
     {
         bool HasUser(string login, string password);
         Testing.Test GetTest(string guid);
+
+        Data.User GetUser(string login, string password);
     }
 }

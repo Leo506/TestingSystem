@@ -1,30 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestingSystem.Data;
 
 namespace TestingSystem.Auth
 {
-    public class AuthModel : INotifyPropertyChanged
+    public class AuthModel
     {
-        private bool _isAuthorized;
-        public bool IsAuthorized
-        {
-            get { return _isAuthorized; }
-            private set
-            {
-                _isAuthorized = value;
-                OnPropertyChange(nameof(IsAuthorized));
-            }
-        }
+        public bool IsAuthorized { get; private set; }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+        public User? AuthUser { get; private set; }
 
         public AuthModel()
         {
-            _isAuthorized = false;
+            IsAuthorized = false;
+            AuthUser = User.Nobody;
         }
 
         public bool TryAuth(string login, string password)
@@ -34,15 +26,11 @@ namespace TestingSystem.Auth
             if (db.HasUser(login, password))
             {
                 IsAuthorized = true;
+                AuthUser = db.GetUser(login, password);
                 return true;
             }
 
             return false;
-        }
-
-        private void OnPropertyChange(string property)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
     }
 }
