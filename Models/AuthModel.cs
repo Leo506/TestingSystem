@@ -11,7 +11,7 @@ namespace TestingSystem.Auth
     {
         public bool IsAuthorized { get; private set; }
 
-        public User? AuthUser { get; private set; }
+        public User AuthUser { get; private set; }
 
         public AuthModel()
         {

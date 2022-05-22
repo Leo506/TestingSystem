@@ -39,8 +39,8 @@ namespace TestingSystem
                 return;
             }
 
-            var main = new MainWindow();
-            main.Show();
+            var profile = new Profile(authModel.AuthUser);
+            profile.Show();
             Close();
         }
     }

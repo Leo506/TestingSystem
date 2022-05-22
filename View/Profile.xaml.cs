@@ -12,16 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace TestingSystem.View
+namespace TestingSystem
 {
     /// <summary>
     /// Логика взаимодействия для Profile.xaml
     /// </summary>
     public partial class Profile : Window
     {
-        public Profile()
+        ProfileViewModel viewModel;
+        public Profile(Data.User user)
         {
             InitializeComponent();
+            viewModel = new ProfileViewModel(user);
+            DataContext = viewModel.AuthUser;
         }
     }
 }
