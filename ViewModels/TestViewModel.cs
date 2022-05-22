@@ -36,6 +36,11 @@ namespace TestingSystem
         public void SetTest(Test test)
         {
             this.test = test;
+            questions = new List<QuestionViewModel>();
+            for (int i = 0; i < test.QuestionCount; i++)
+            {
+                questions.Add(new QuestionViewModel(test.GetQuestion(i)));
+            }
         }
 
         public bool NextQuestion()

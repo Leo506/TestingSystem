@@ -8,6 +8,6 @@ namespace TestingSystem.DB
 {
     public class DBWorkerFactory
     {
-        public static IDBWorker GetDBWorker() => new StubDBWorler();
+        public static IDBWorker GetDBWorker() => new LocalDBWorker();
     }
 }
