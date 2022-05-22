@@ -14,5 +14,17 @@ namespace TestingSystem
         {
             AuthUser = user;
         }
+
+        public bool StartText(string guid, out Testing.Test test)
+        {
+            var db = DB.DBWorkerFactory.GetDBWorker();
+
+            test = db.GetTest(guid);
+
+            if (test.IsEmpty)
+                return false;
+
+            return true;
+        }
     }
 }

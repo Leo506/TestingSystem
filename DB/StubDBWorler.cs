@@ -12,7 +12,7 @@ namespace TestingSystem.DB
     {
         public Test GetTest(string guid)
         {
-            return new Test();
+            return Data.DataFactory.BuildDataGiver().GetTest();
         }
 
         public User GetUser(string login, string password)

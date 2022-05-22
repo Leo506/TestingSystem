@@ -21,11 +21,12 @@ namespace TestingSystem
     public partial class MainWindow : Window
     {
         TestViewModel viewModel;
-        public MainWindow()
+        public MainWindow(Testing.Test test)
         {
             InitializeComponent();
 
             viewModel = new TestViewModel();
+            viewModel.SetTest(test);
 
             DataContext = viewModel.Question;
 
@@ -45,6 +46,7 @@ namespace TestingSystem
             {
                 var summary = new SummaryWindow(viewModel.GetTest());
                 summary.ShowDialog();
+                Close();
             }
         }
 

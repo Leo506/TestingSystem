@@ -33,6 +33,11 @@ namespace TestingSystem
             }
         }
 
+        public void SetTest(Test test)
+        {
+            this.test = test;
+        }
+
         public bool NextQuestion()
         {
             if (questionIndex + 1 < test.QuestionCount)

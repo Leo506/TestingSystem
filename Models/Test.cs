@@ -10,6 +10,7 @@ namespace TestingSystem.Testing
     {
         public int QuestionCount { get => questions.Count; }
         public float Statistic { get => (float) questions.Where(q => q.GetState() == QuestionStates.CORRECT_ANSWER).Count() / questions.Count; }
+        public bool IsEmpty { get => questions.Count == 0; }
 
         private List<Question> questions;
 
