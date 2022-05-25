@@ -8,6 +8,8 @@ using TestingSystem.Testing;
 using System.Net;
 using System.IO;
 using System.Text.Json;
+using System.Diagnostics;
+using System.Net.Http;
 
 namespace TestingSystem.DB
 {
@@ -20,40 +22,41 @@ namespace TestingSystem.DB
 
         public User GetUser(string login, string password)
         {
-            string url = $"https://localhost:7198/testing/api/GetUser/{login}&{password}";
-            Task<string> task = Request(url);
+            string url = $"http://testingsystem.com:8080/testing/api/GetUser/{login}&{password}";
+            string result = GetResponse(url);
 
-            string result = task.Result;
+            var user = JsonSerializer.Deserialize<User>(result);
 
-            var user = JsonSerializer.Deserialize(result, typeof(User));
 
-            return (User)user;
+            return user;
         }
+
 
         public bool HasUser(string login, string password)
         {
-            return true;
+            string url = $"http://testingsystem.com:8080/testing/api/CheckUser/{login}&{password}";
+            string result = GetResponse(url);
+
+            return result == "true";
         }
 
 
-        private static async Task<string> Request(string url)
+        private static string GetResponse(string url)
         {
+            WebRequest webRequest = WebRequest.Create(url);
+            webRequest.Credentials = CredentialCache.DefaultCredentials;
+
+            var response = webRequest.GetResponse();
+
             string responseString = "";
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-
-            request.ServerCertificateValidationCallback = delegate { return true; };
-
-            var response = await request.GetResponseAsync();
-
             using (Stream stream = response.GetResponseStream())
             {
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    responseString = reader.ReadToEnd();
-                }
+                StreamReader reader = new StreamReader(stream);
+                responseString = reader.ReadToEnd();
             }
 
+            response.Close();
+            Trace.WriteLine("Response: " + responseString);
             return responseString;
         }
     }

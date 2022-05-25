@@ -8,21 +8,21 @@ namespace TestingSystem.Data
 {
     public struct User
     {
-        public string Name { get; set; }
-        public int CountOfTests { get; set; }
+        public string name { get; set; }
+        public int countOfTests { get; set; }
 
         public static User Nobody
         {
             get
             {
-                return new User { Name = "", CountOfTests = 0 };
+                return new User { name = "", countOfTests = 0 };
             }
         }
 
         public User(string name, int countOfTests)
         {
-            Name = name;
-            CountOfTests = countOfTests;
+            this.name = name;
+            this.countOfTests = countOfTests;
         }
     }
 }

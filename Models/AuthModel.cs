@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,24 +14,28 @@ namespace TestingSystem.Auth
 
         public User AuthUser { get; private set; }
 
+        public Action<bool> AuthorizedEvent;
+
         public AuthModel()
         {
             IsAuthorized = false;
             AuthUser = User.Nobody;
         }
 
-        public bool TryAuth(string login, string password)
+        public void TryAuth(string login, string password)
         {
             var db = DB.DBWorkerFactory.GetDBWorker();
 
             if (db.HasUser(login, password))
             {
+                Trace.WriteLine("Has user");
                 IsAuthorized = true;
                 AuthUser = db.GetUser(login, password);
-                return true;
+                Trace.WriteLine(AuthUser);
+                AuthorizedEvent?.Invoke(true);
             }
-
-            return false;
+            else
+                AuthorizedEvent?.Invoke(false);
         }
     }
 }

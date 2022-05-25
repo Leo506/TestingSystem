@@ -25,6 +25,7 @@ namespace TestingSystem
         {
             InitializeComponent();
             authModel = new Auth.AuthModel();
+            authModel.AuthorizedEvent += OnAuth;
         }
 
         private void Authorize(object sender, RoutedEventArgs e)
@@ -32,16 +33,20 @@ namespace TestingSystem
             var login = LoginInput.Text;
             var password = PasswordInput.Password;
 
-            var result = authModel.TryAuth(login, password);
-            if (!result)
-            {
-                MessageBox.Show("Authorization failed");
-                return;
-            }
+            Dispatcher.BeginInvoke(authModel.TryAuth, login, password);
+            
+        }
 
-            var profile = new Profile(authModel.AuthUser);
-            profile.Show();
-            Close();
+        private void OnAuth(bool status)
+        {
+            if (!status)
+                MessageBox.Show("Autorization failed");
+            else
+            {
+                var profile = new Profile(authModel.AuthUser);
+                profile.Show();
+                Close();
+            }
         }
     }
 }

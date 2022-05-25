@@ -17,7 +17,7 @@ namespace TestingSystem.DB
 
         public User GetUser(string login, string password)
         {
-            return new User() { Name = login == "Admin" ? "God" : "Nobody", CountOfTests = 0 };
+            return new User() { name = login == "Admin" ? "God" : "Nobody", countOfTests = 0 };
         }
 
         public bool HasUser(string login, string password)

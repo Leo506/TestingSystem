@@ -63,7 +63,7 @@ namespace TestingSystem.DB
             var reader = command.ExecuteReader();
             reader.Read();
 
-            User user = new User() { Name = reader.GetString("Name"), CountOfTests = 0 };
+            User user = new User() { name = reader.GetString("Name"), countOfTests = 0 };
 
             reader.Close();
             reader.Dispose();
