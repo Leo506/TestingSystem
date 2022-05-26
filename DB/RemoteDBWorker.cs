@@ -5,6 +5,7 @@ using System.Net;
 using System.IO;
 using System.Text.Json;
 using System.Diagnostics;
+using System.Xml;
 
 namespace TestingSystem.DB
 {
@@ -12,7 +13,14 @@ namespace TestingSystem.DB
     {
         public Test GetTest(string guid)
         {
-            throw new NotImplementedException();
+            string url = Settings.Settings.GetSettings("baseUrl") + Settings.Settings.GetSettings("getTestUrl");
+            url += $"{guid}";
+
+            string response = GetResponse(url);
+
+            XmlDocument xml = (XmlDocument)Newtonsoft.Json.JsonConvert.DeserializeXmlNode(response);
+
+            return Utils.XmlToTestConverter.XmlToTest(xml);
         }
 
         public User GetUser(string login, string password)
@@ -40,6 +48,7 @@ namespace TestingSystem.DB
 
         private static string GetResponse(string url)
         {
+            Trace.WriteLine("Url: " + url);
             WebRequest webRequest = WebRequest.Create(url);
             webRequest.Credentials = CredentialCache.DefaultCredentials;
 
