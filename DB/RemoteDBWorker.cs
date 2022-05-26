@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TestingSystem.Data;
 using TestingSystem.Testing;
 using System.Net;
 using System.IO;
 using System.Text.Json;
 using System.Diagnostics;
-using System.Net.Http;
 
 namespace TestingSystem.DB
 {
@@ -22,7 +17,8 @@ namespace TestingSystem.DB
 
         public User GetUser(string login, string password)
         {
-            string url = $"http://testingsystem.com:8080/testing/api/GetUser/{login}&{password}";
+            string url = Settings.Settings.GetSettings("baseUrl") + Settings.Settings.GetSettings("getUserUrl");
+            url += $"{login}&{password}";
             string result = GetResponse(url);
 
             var user = JsonSerializer.Deserialize<User>(result);
@@ -34,7 +30,8 @@ namespace TestingSystem.DB
 
         public bool HasUser(string login, string password)
         {
-            string url = $"http://testingsystem.com:8080/testing/api/CheckUser/{login}&{password}";
+            string url = Settings.Settings.GetSettings("baseUrl") + Settings.Settings.GetSettings("checkUserUrl");
+            url += $"{login}&{password}";
             string result = GetResponse(url);
 
             return result == "true";
