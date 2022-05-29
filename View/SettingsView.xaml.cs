@@ -12,16 +12,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace TestingSystem.View
+namespace TestingSystem
 {
     /// <summary>
     /// Логика взаимодействия для Settings.xaml
     /// </summary>
-    public partial class Settings : Window
+    public partial class SettingsView : Window
     {
-        public Settings()
+        SettingsViewModel viewModel;
+        public SettingsView()
         {
             InitializeComponent();
+
+            viewModel = new SettingsViewModel();
+
+            DataContext = viewModel;
         }
     }
 }
