@@ -13,6 +13,8 @@ namespace TestingSystem
 
         public string Result { get; private set; }
 
+        public static event Action<double> TestEndEvent;
+
         public SummaryViewModel(Testing.Test test)
         {
             Testing.Question[] questions = new Testing.Question[test.QuestionCount];
@@ -24,6 +26,8 @@ namespace TestingSystem
             double tmp = test.Statistic * 100;
             tmp = Math.Round(tmp, 2);
             Result = tmp.ToString() + "%";
+
+            TestEndEvent?.Invoke(test.Statistic);
         }
     }
 }

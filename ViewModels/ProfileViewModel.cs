@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,14 +10,20 @@ namespace TestingSystem
 {
     public class ProfileViewModel
     {
-        public Data.User AuthUser { get; set; }
+        public Data.User AuthUser;
 
         public ProfileViewModel(Data.User user)
         {
             AuthUser = user;
+            SummaryViewModel.TestEndEvent += OnTestEnd;
         }
 
-        public bool StartText(string guid, out Testing.Test test)
+        private void OnTestEnd(double obj)
+        {
+            AuthUser.countOfTests++;
+        }
+
+        public bool StartTest(string guid, out Testing.Test test)
         {
             var db = DB.DBWorkerFactory.GetDBWorker();
 

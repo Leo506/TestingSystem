@@ -30,12 +30,13 @@ namespace TestingSystem
         private void StartTest(object sender, RoutedEventArgs e)
         {
             Testing.Test test;
-            if (viewModel.StartText(IdInput.Text, out test))
+            if (viewModel.StartTest(IdInput.Text, out test))
             {
                 Visibility = Visibility.Collapsed;
                 var main = new MainWindow(test);
                 main.ShowDialog();
                 Visibility = Visibility.Visible;
+                DataContext = viewModel.AuthUser;
             }
         }
     }
