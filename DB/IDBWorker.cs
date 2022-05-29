@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestingSystem.Testing;
+using TestingSystem.Data;
 
 namespace TestingSystem.DB
 {
     public interface IDBWorker
     {
         bool HasUser(string login, string password);
-        Testing.Test GetTest(string guid);
+        Test GetTest(string guid);
 
-        Data.User GetUser(string login, string password);
+        User GetUser(string login, string password);
+
+        List<TestInfo> GetPassedTests(int id);
     }
 }

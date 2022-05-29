@@ -6,6 +6,7 @@ using System.IO;
 using System.Text.Json;
 using System.Diagnostics;
 using System.Xml;
+using System.Collections.Generic;
 
 namespace TestingSystem.DB
 {
@@ -64,6 +65,11 @@ namespace TestingSystem.DB
             response.Close();
             Trace.WriteLine("Response: " + responseString);
             return responseString;
+        }
+
+        public List<TestInfo> GetPassedTests(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

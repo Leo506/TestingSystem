@@ -85,6 +85,25 @@ namespace TestingSystem.DB
             return result;
         }
 
+        public List<TestInfo> GetPassedTests(int id)
+        {
+            string sql = $"call GetPassedTests({id});";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            List<TestInfo> tests = new List<TestInfo>();
+
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                TestInfo info = new TestInfo() { Guid = reader.GetString("guid"), Result = reader.GetDouble("result") };
+                tests.Add(info);
+            }
+
+            reader.Close();
+            reader.Dispose();
+
+            return tests;
+        }
+
         ~LocalDBWorker()
         {
             if (connection != null && connection.State == System.Data.ConnectionState.Open)

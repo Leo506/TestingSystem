@@ -10,14 +10,14 @@ namespace TestingSystem
 {
     public class ProfileModel
     {
-        public List<Test> passedTests { get; }
+        public List<TestInfo> passedTests { get; }
 
         private User _user;
         public User User { get => _user; }
 
         public ProfileModel()
         {
-            passedTests = new List<Test>();
+            passedTests = new List<TestInfo>();
             _user = User.Nobody;
             SummaryViewModel.TestEndEvent += OnTestEnd;
         }

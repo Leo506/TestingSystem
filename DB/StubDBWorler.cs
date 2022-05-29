@@ -10,6 +10,11 @@ namespace TestingSystem.DB
 {
     public class StubDBWorler : IDBWorker
     {
+        public List<TestInfo> GetPassedTests(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Test GetTest(string guid)
         {
             return Data.DataFactory.BuildDataGiver().GetTest();
