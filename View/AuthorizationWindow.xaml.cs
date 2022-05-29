@@ -48,5 +48,14 @@ namespace TestingSystem
                 Close();
             }
         }
+
+        private void OpenSettingsWindow(object sender, RoutedEventArgs e)
+        {
+            var settings = new SettingsView();
+            Visibility = Visibility.Collapsed;
+            settings.ShowDialog();
+            Visibility = Visibility.Visible;
+
+        }
     }
 }

@@ -13,6 +13,10 @@
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
+        <Menu>
+            <MenuItem Header="Настройки" Click="OpenSettingsWindow"/>
+        </Menu>
+
         <Label Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="Авторизация" FontSize="36" FontStyle="Normal" FontFamily="Cascadia Code"/>
 
         <StackPanel Grid.Row="1">
