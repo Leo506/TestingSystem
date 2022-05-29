@@ -10,18 +10,14 @@ namespace TestingSystem
 {
     public class ProfileViewModel
     {
-        public Data.User AuthUser;
+        public ProfileModel Profile { get; }
 
         public ProfileViewModel(Data.User user)
         {
-            AuthUser = user;
-            SummaryViewModel.TestEndEvent += OnTestEnd;
+            Profile = new ProfileModel(user);
+            
         }
 
-        private void OnTestEnd(double obj)
-        {
-            AuthUser.countOfTests++;
-        }
 
         public bool StartTest(string guid, out Testing.Test test)
         {

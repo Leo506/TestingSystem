@@ -8,6 +8,7 @@ namespace TestingSystem.Data
 {
     public struct User
     {
+        public int id { get; set; }
         public string name { get; set; }
         public int countOfTests { get; set; }
 
@@ -15,12 +16,13 @@ namespace TestingSystem.Data
         {
             get
             {
-                return new User { name = "", countOfTests = 0 };
+                return new User { name = "", countOfTests = 0, id = -1 };
             }
         }
 
-        public User(string name, int countOfTests)
+        public User(int id, string name, int countOfTests)
         {
+            this.id = id;
             this.name = name;
             this.countOfTests = countOfTests;
         }

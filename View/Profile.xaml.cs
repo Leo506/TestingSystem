@@ -24,7 +24,7 @@ namespace TestingSystem
         {
             InitializeComponent();
             viewModel = new ProfileViewModel(user);
-            DataContext = viewModel.AuthUser;
+            DataContext = viewModel.Profile.User;
         }
 
         private void StartTest(object sender, RoutedEventArgs e)
@@ -36,7 +36,7 @@ namespace TestingSystem
                 var main = new MainWindow(test);
                 main.ShowDialog();
                 Visibility = Visibility.Visible;
-                DataContext = viewModel.AuthUser;
+                DataContext = viewModel.Profile.User;
             }
         }
     }
