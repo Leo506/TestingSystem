@@ -27,6 +27,18 @@ namespace TestingSystem
             viewModel = new SettingsViewModel();
 
             DataContext = viewModel;
+
+            IpInput.IsEnabled = !viewModel.UseLocalDB;
+        }
+
+        private void UseLocalDB(object sender, RoutedEventArgs e)
+        {
+            IpInput.IsEnabled = false;
+        }
+
+        private void UnusedLocalDB(object sender, RoutedEventArgs e)
+        {
+            IpInput.IsEnabled = true;
         }
     }
 }

@@ -8,6 +8,12 @@ namespace TestingSystem.DB
 {
     public class DBWorkerFactory
     {
-        public static IDBWorker GetDBWorker() => new RemoteDBWorker();
+        public static IDBWorker GetDBWorker()
+        {
+            if (Settings.Settings.GetSettings("database") == "local")
+                return new LocalDBWorker();
+
+            return new RemoteDBWorker();
+        }
     }
 }

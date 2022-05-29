@@ -33,6 +33,19 @@ namespace TestingSystem
             }
         }
 
+        private bool _useLocalDB;
+        public bool UseLocalDB
+        {
+            get { return _useLocalDB;}
+            set
+            {
+                _useLocalDB = value;
+                OnPropertyChange(nameof(UseLocalDB));
+
+                Settings.Settings.SetSettings("database", _useLocalDB ? "local" : "remote");
+            }
+        }
+
         private void OnPropertyChange(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
@@ -42,6 +55,7 @@ namespace TestingSystem
         {
             string? tmp = Settings.Settings.GetSettings("baseUrl");
             _url = tmp?.Substring(7, tmp.Length - 12);
+            _useLocalDB = Settings.Settings.GetSettings("database") == "local";
         }
     }
 }

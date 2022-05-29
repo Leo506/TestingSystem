@@ -15,9 +15,15 @@
 
         <TextBlock Text="Настройки"  Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
-            <TextBlock Text="Ip-адрес сервера" Height="25" FontSize="16"/>
-            <TextBox Height="25" Width="113" Margin="10 0 0 0" Text="{Binding Url, Mode=TwoWay}"/>
+        <StackPanel Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Ip-адрес сервера" Height="25" FontSize="16"/>
+                <TextBox x:Name="IpInput" Height="25" Width="113" Margin="10 0 0 0" Text="{Binding Url, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Использовать локальную базу" Height="25" FontSize="16"/>
+                <CheckBox IsChecked="{Binding UseLocalDB}" Margin="10 5 0 0" Checked="UseLocalDB" Unchecked="UnusedLocalDB"/>
+            </StackPanel>
         </StackPanel>
 
         <Button Grid.Row="2" Content="Принять" HorizontalAlignment="Center" VerticalAlignment="Center" Width="87"/>
