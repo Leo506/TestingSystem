@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TestingSystem.Data;
-using TestingSystem.Testing;
+using TestingSystem.Models;
+using TestingSystem.ViewModels;
 
-namespace TestingSystem
+namespace TestingSystem.Models
 {
     public class ProfileModel
     {
@@ -33,6 +34,13 @@ namespace TestingSystem
         private void OnTestEnd(double obj)
         {
             _user.countOfTests++;
+        }
+
+
+        public void SaveProfile()
+        {
+            // TODO Сохрание изменений
+            //DB.DBWorkerFactory.GetDBWorker().SaveProfile(this);
         }
     }
 }

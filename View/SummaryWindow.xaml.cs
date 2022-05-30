@@ -11,8 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TestingSystem.Models;
+using TestingSystem.ViewModels;
 
-namespace TestingSystem
+namespace TestingSystem.View
 {
     /// <summary>
     /// Логика взаимодействия для SummaryWindow.xaml
@@ -20,7 +22,7 @@ namespace TestingSystem
     public partial class SummaryWindow : Window
     {
         SummaryViewModel viewModel;
-        public SummaryWindow(Testing.Test test)
+        public SummaryWindow(Test test)
         {
             InitializeComponent();
             viewModel = new SummaryViewModel(test);

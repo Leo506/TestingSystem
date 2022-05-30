@@ -6,9 +6,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TestingSystem.Testing;
+using TestingSystem.Models;
 
-namespace TestingSystem
+namespace TestingSystem.ViewModels
 {
     public class TestViewModel
     {

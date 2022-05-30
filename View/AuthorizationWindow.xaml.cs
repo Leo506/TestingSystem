@@ -12,19 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TestingSystem.Models;
 
-namespace TestingSystem
+namespace TestingSystem.View
 {
     /// <summary>
     /// Логика взаимодействия для AuthorizationPage.xaml
     /// </summary>
     public partial class AuthorizationWindow : Window
     {
-        Auth.AuthModel authModel;
+        AuthModel authModel;
         public AuthorizationWindow()
         {
             InitializeComponent();
-            authModel = new Auth.AuthModel();
+            authModel = new AuthModel();
             authModel.AuthorizedEvent += OnAuth;
         }
 

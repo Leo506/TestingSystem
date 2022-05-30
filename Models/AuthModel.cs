@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TestingSystem.Data;
 
-namespace TestingSystem.Auth
+namespace TestingSystem.Models
 {
     public class AuthModel
     {

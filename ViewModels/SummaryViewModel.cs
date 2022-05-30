@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestingSystem.Models;
 
-namespace TestingSystem
+namespace TestingSystem.ViewModels
 {
     public class SummaryViewModel
     {
@@ -13,15 +14,15 @@ namespace TestingSystem
 
         public string Result { get; private set; }
 
-        public static event Action<double> TestEndEvent;
+        public static event Action<double>? TestEndEvent;
 
-        public SummaryViewModel(Testing.Test test)
+        public SummaryViewModel(Test test)
         {
-            Testing.Question[] questions = new Testing.Question[test.QuestionCount];
+            Question[] questions = new Question[test.QuestionCount];
             for (int i = 0; i < questions.Length; i++)
                 questions[i] = test.GetQuestion(i);
 
-            CorrectAnswersCount = questions.Where(q => q.GetState() == Testing.QuestionStates.CORRECT_ANSWER).Count();
+            CorrectAnswersCount = questions.Where(q => q.GetState() == QuestionStates.CORRECT_ANSWER).Count();
             AllAnswersCount = questions.Length;
             double tmp = test.Statistic * 100;
             tmp = Math.Round(tmp, 2);

@@ -12,8 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TestingSystem.Models;
+using TestingSystem.ViewModels;
 
-namespace TestingSystem
+namespace TestingSystem.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -21,7 +23,7 @@ namespace TestingSystem
     public partial class MainWindow : Window
     {
         TestViewModel viewModel;
-        public MainWindow(Testing.Test test)
+        public MainWindow(Test test)
         {
             InitializeComponent();
 

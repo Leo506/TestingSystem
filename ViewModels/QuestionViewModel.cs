@@ -5,19 +5,20 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestingSystem.Models;
 
-namespace TestingSystem
+namespace TestingSystem.ViewModels
 {
     public class QuestionViewModel
     {
-        private Testing.Question question;
+        private Question question;
 
         public string QuestionText { get => question.QuestionText; }
 
         private AnswerViewModel[] _answers;
         public AnswerViewModel[] Answers { get => _answers; }
 
-        public QuestionViewModel(Testing.Question question)
+        public QuestionViewModel(Question question)
         {
             this.question = question;
             _answers = new AnswerViewModel[question.Answers.Length];

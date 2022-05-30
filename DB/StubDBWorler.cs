@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TestingSystem.Data;
-using TestingSystem.Testing;
+using TestingSystem.Models;
 
 namespace TestingSystem.DB
 {

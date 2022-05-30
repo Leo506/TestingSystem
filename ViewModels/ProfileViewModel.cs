@@ -5,8 +5,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestingSystem.Models;
 
-namespace TestingSystem
+namespace TestingSystem.ViewModels
 {
     public class ProfileViewModel
     {
@@ -19,7 +20,7 @@ namespace TestingSystem
         }
 
 
-        public bool StartTest(string guid, out Testing.Test test)
+        public bool StartTest(string guid, out Test test)
         {
             var db = DB.DBWorkerFactory.GetDBWorker();
 

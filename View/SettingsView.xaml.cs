@@ -11,8 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TestingSystem.ViewModels;
 
-namespace TestingSystem
+namespace TestingSystem.View
 {
     /// <summary>
     /// Логика взаимодействия для Settings.xaml

@@ -12,8 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TestingSystem.Models;
+using TestingSystem.ViewModels;
 
-namespace TestingSystem
+namespace TestingSystem.View
 {
     /// <summary>
     /// Логика взаимодействия для Profile.xaml
@@ -30,7 +32,7 @@ namespace TestingSystem
 
         private void StartTest(object sender, RoutedEventArgs e)
         {
-            Testing.Test test;
+            Test test;
             if (viewModel.StartTest(IdInput.Text, out test))
             {
                 Visibility = Visibility.Collapsed;

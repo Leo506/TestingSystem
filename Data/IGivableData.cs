@@ -8,6 +8,6 @@ namespace TestingSystem.Data
 {
     public interface IGivableData
     {
-        Testing.Test GetTest();
+        Models.Test GetTest();
     }
 }
