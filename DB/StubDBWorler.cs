@@ -32,5 +32,10 @@ namespace TestingSystem.DB
 
             return false;
         }
+
+        public void UpdateData(int userId, string testId, double result)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -105,6 +105,31 @@ namespace TestingSystem.DB
             return tests;
         }
 
+        public void UpdateData(int userId, string guid, double result)
+        {
+            string sql = $"select idTest from test where guid = \"{guid}\";";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+
+            int testId = (int)command.ExecuteScalar();
+
+            sql = $"select * from passedtest where IdUser={userId} and IdTest={testId};";
+            command = new MySqlCommand(sql, connection);
+            var reader = command.ExecuteReader();
+            bool hasRows = reader.HasRows;
+            reader.Close();
+            reader.Dispose();
+
+            if (hasRows)
+                sql = $"update passedtest set result={result} where IdUser={userId} and IdTest={testId};";
+            else
+                sql = $"insert into passedtest (IdUser, IdTest, result) values ({userId}, {testId}, {result});";
+
+            command = new MySqlCommand(sql, connection);
+            command.ExecuteNonQuery();
+
+            
+        }
+
         ~LocalDBWorker()
         {
             if (connection != null && connection.State == System.Data.ConnectionState.Open)

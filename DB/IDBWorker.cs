@@ -16,5 +16,7 @@ namespace TestingSystem.DB
         User GetUser(string login, string password);
 
         List<TestInfo> GetPassedTests(int id);
+
+        void UpdateData(int userId, string testId, double result);
     }
 }

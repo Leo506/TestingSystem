@@ -14,7 +14,7 @@ namespace TestingSystem.ViewModels
 
         public string Result { get; private set; }
 
-        public static event Action<double>? TestEndEvent;
+        public static event Action<string, double>? TestEndEvent;
 
         public SummaryViewModel(Test test)
         {
@@ -28,7 +28,7 @@ namespace TestingSystem.ViewModels
             tmp = Math.Round(tmp, 2);
             Result = tmp.ToString() + "%";
 
-            TestEndEvent?.Invoke(test.Statistic);
+            TestEndEvent?.Invoke(test.Guid, test.Statistic);
         }
     }
 }

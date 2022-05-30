@@ -11,7 +11,7 @@ namespace TestingSystem.Models
 {
     public class ProfileModel
     {
-        public List<TestInfo> passedTests { get; }
+        public List<TestInfo> passedTests { get; private set; }
 
         private User _user;
         public User User { get => _user; }
@@ -31,9 +31,11 @@ namespace TestingSystem.Models
             SummaryViewModel.TestEndEvent += OnTestEnd;
         }
 
-        private void OnTestEnd(double obj)
+        private void OnTestEnd(string guid, double res)
         {
-            _user.countOfTests++;
+            var db = DB.DBWorkerFactory.GetDBWorker();
+            db.UpdateData(User.id, guid, res);
+            passedTests = db.GetPassedTests(User.id);
         }
 
 

@@ -71,5 +71,10 @@ namespace TestingSystem.DB
         {
             throw new NotImplementedException();
         }
+
+        public void UpdateData(int userId, string testId, double result)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
