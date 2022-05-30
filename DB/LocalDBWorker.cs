@@ -30,11 +30,11 @@ namespace TestingSystem.DB
 
             var path = command.ExecuteScalar().ToString();
             if (path == null)
-                return new Test();
+                return new Test(guid);
 
             XDocument doc = XDocument.Load(path);
             var root = doc.Root;
-            Test test = new Test();
+            Test test = new Test(guid);
             foreach (var item in root.Elements("Question"))
             {
                 string text = item.Attribute("Text").Value;

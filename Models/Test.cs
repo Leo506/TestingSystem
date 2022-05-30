@@ -12,12 +12,15 @@ namespace TestingSystem.Models
         public float Statistic { get => (float) questions.Where(q => q.GetState() == QuestionStates.CORRECT_ANSWER).Count() / questions.Count; }
         public bool IsEmpty { get => questions.Count == 0; }
 
+        public string Guid { get; private set; }
+
         private List<Question> questions;
 
 
-        public Test()
+        public Test(string guid)
         {
             questions = new List<Question>();
+            Guid = guid;
         }
 
 

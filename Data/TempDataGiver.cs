@@ -11,7 +11,7 @@ namespace TestingSystem.Data
     {
         public Test GetTest()
         {
-            Test test = new Test();
+            Test test = new Test("");
             Question q1 = new Question(new string[] { "5", "4", "3" }, 0, "Сколько пальцев на руке у человека?");
             Question q2 = new Question(new string[] { "Венера", "Земля", "Марс" }, 1, "На какой планете мы живем?");
             Question q3 = new Question(new string[] { "Красный", "Зеленый", "Синий" }, 2, "Какого цвета небо?");

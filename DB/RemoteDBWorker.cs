@@ -21,7 +21,7 @@ namespace TestingSystem.DB
 
             XmlDocument xml = (XmlDocument)Newtonsoft.Json.JsonConvert.DeserializeXmlNode(response);
 
-            return Utils.XmlToTestConverter.XmlToTest(xml);
+            return Utils.XmlToTestConverter.XmlToTest(xml, guid);
         }
 
         public User GetUser(string login, string password)

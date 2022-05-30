@@ -11,7 +11,7 @@ namespace TestingSystem.Utils
 {
     public class XmlToTestConverter
     {
-        public static Test XmlToTest(XmlDocument doc)
+        public static Test XmlToTest(XmlDocument doc, string guid)
         {
             XDocument d;
             using (var nodeReader = new XmlNodeReader(doc))
@@ -21,7 +21,7 @@ namespace TestingSystem.Utils
             }
 
             var root = d.Root;
-            Test test = new Test();
+            Test test = new Test(guid);
             foreach (var item in root.Elements("Question"))
             {
                 string text = item.Attribute("Text").Value;

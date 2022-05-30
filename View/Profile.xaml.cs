@@ -27,7 +27,7 @@ namespace TestingSystem.View
         {
             InitializeComponent();
             viewModel = new ProfileViewModel(user);
-            DataContext = viewModel.Profile.User;
+            DataContext = viewModel?.Profile?.User;
         }
 
         private void StartTest(object sender, RoutedEventArgs e)

@@ -11,12 +11,11 @@ namespace TestingSystem.ViewModels
 {
     public class ProfileViewModel
     {
-        public ProfileModel Profile { get; }
+        public ProfileModel? Profile { get; }
 
         public ProfileViewModel(Data.User user)
         {
             Profile = new ProfileModel(user);
-            
         }
 
 
@@ -26,10 +25,7 @@ namespace TestingSystem.ViewModels
 
             test = db.GetTest(guid);
 
-            if (test.IsEmpty)
-                return false;
-
-            return true;
+            return !test.IsEmpty;
         }
     }
 }
