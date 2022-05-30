@@ -21,8 +21,9 @@
             <TextBlock Text="{Binding name}" FontSize="24" FontWeight="Bold"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
-            <TextBlock Text="Количество пройденных тестов " FontSize="20"/>
-            <TextBlock Text="{Binding countOfTests, UpdateSourceTrigger=PropertyChanged}" FontSize="20"/>
+            <!--<TextBlock Text="Количество пройденных тестов " FontSize="20"/>
+            <TextBlock Text="{Binding countOfTests, UpdateSourceTrigger=PropertyChanged}" FontSize="20"/>-->
+            <Button Content="Просмотр статистики" Click="ShowStats"/>
         </StackPanel>
 
         <TextBlock Grid.Row="0" Grid.Column="1" Text="Введите ID теста" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20"/>

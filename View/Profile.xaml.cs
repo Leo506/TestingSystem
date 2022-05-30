@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace TestingSystem
@@ -38,6 +39,13 @@ namespace TestingSystem
                 Visibility = Visibility.Visible;
                 DataContext = viewModel.Profile.User;
             }
+        }
+
+
+        private void ShowStats(object sender, RoutedEventArgs e)
+        {
+            var stats = new StatisticPage(viewModel.Profile);
+            stats.ShowDialog();
         }
     }
 }

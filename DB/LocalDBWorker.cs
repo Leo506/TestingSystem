@@ -63,7 +63,7 @@ namespace TestingSystem.DB
             var reader = command.ExecuteReader();
             reader.Read();
 
-            User user = new User() { name = reader.GetString("Name"), countOfTests = 0 };
+            User user = new User() { name = reader.GetString("Name"), countOfTests = 0, id  = reader.GetInt32("IdUser") };
 
             reader.Close();
             reader.Dispose();
@@ -95,6 +95,7 @@ namespace TestingSystem.DB
             while (reader.Read())
             {
                 TestInfo info = new TestInfo() { Guid = reader.GetString("guid"), Result = reader.GetDouble("result") };
+                Trace.WriteLine($"Test info: {info.Guid}, {info.Result}");
                 tests.Add(info);
             }
 
